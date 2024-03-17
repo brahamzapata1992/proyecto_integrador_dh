@@ -1,0 +1,66 @@
+.container-listado-cards {
+    display: flex;
+    justify-content: center;
+    max-width: 100vw;
+    min-height: 60vh;    
+}
+
+.grid-container-listaProductos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+
+/* Estilos para la paginación */
+.pagination {
+    margin-top: 20px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination button {
+    background-color: #FDA310;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+}
+
+.pagination button:hover {
+    background-color: #feb642;
+}
+
+.pagination button:disabled {
+    background-color: #7c8185;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+    .container-listado-cards {
+        display: flex;
+        justify-content: center;
+        max-width: 100vw;
+    }
+    
+    .grid-container-listaProductos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Estilos responsivos */
+@media (max-width: 767px) {
+    .grid-container-listaProductos {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+}

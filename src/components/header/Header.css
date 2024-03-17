@@ -1,0 +1,272 @@
+.contenedor-header-principal{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 13vh;    
+    align-items: center;
+    padding-left: 40px;
+    background-color: white;   
+}
+.logo-header{
+    width: 30%;
+}
+.contenedor-header-botones{
+    display: flex;
+    padding-right: 60px;
+    justify-content: space-between;    
+}
+.boton-header-inisiar{
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 149px;
+    height: 49px;
+    border-radius: 20px;
+    border: none;
+    background-color: #FDA310;
+    color: white;
+    margin-right: 20px;
+    font-size: 19px;    
+}
+.boton-header-cerrar{
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 149px;
+    height: 49px;
+    border-radius: 20px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    font-size: 19px;
+}
+.boton-header-inisiar:hover{
+    background-color: #f7b141;
+}
+.boton-header-cerrar:hover{
+    background-color: #232323;
+}
+.boton-menu-header-hamburger{
+    display: none;
+}
+.contenedor-header-logo-lema{
+    display: flex;
+    flex-direction: column;    
+}
+.lema-header-text{
+    text-align: left;
+}
+.link-botones-regi-login{
+    text-decoration: none;
+}
+.circle-login-avatar-user {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #FFEAC9; 
+    color: #FDA310; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-right: 20px;   
+  }
+  .circle-login-avatar-user-contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4vw;
+  }
+  .modal-header-hamburguesa{
+    display: none;
+  }
+  .drop-down-login-header{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;    
+  }
+  .nombre-usuario-logueado{
+    cursor: pointer;
+  }
+  .modal-nombre-drop-donw-header-listado {
+    position: absolute;
+    background-color: white; 
+    transform: translate(-50%, -50%);
+    width: 8%;
+    height: 12%;
+    top: 14%;
+    left: 93%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    justify-content: space-around;
+    padding-left: 10px;    
+    flex-direction: column;        
+    z-index: 0;
+    font-size: 20px;        
+  }
+  .text-icono-header-nuevo-modal-1{
+    cursor: pointer;
+    display: flex;    
+  }
+  .text-icono-header-nuevo-modal-2{
+    cursor: pointer;
+    display: flex;    
+  }
+  .text-icono-header-nuevo-modal-3{
+    cursor: pointer;
+    display: flex;    
+  }
+  .text-icono-header-nuevo-modal-1:hover{
+    color: #606060;   
+  }
+  .text-icono-header-nuevo-modal-2:hover{
+    color: #606060;   
+  }
+  .text-icono-header-nuevo-modal-3:hover{
+    color: #606060;  
+  }
+  .icono-header-perfil-nuevo-modal{
+    color: #FDA310;
+    margin-right: 5px;
+  }
+
+
+  @media (max-width: 1440px) {
+    .modal-nombre-drop-donw-header-listado{
+        width: 11vw;
+        left: 92%;
+        top: 15%;
+    }
+    
+  }
+
+
+
+@media (max-width: 1024px) {
+    .contenedor-header-principal{
+        height: 10vh;       
+    }
+    .contenedor-header-botones{        
+        padding-right: 20px;     
+    }
+    .logo-header{
+        width: 50%;
+    }
+    .boton-menu-header-hamburger{
+        display: none;
+    }
+    .circle-login-avatar-user-contenedor{
+        width: 30vw;        
+    }
+    .modal-header-hamburguesa{
+        display: none;
+      }
+    .circle-login-avatar-user-contenedor{
+        width: 50vw;
+    }
+    .modal-nombre-drop-donw-header-listado{
+        width: 20vw;
+        left: 85%;
+    }
+}   
+
+@media (max-width: 767px) {
+    .modal-header-hamburguesa{
+        display: block;
+      }
+    .lema-header-text {
+        display: none;
+    }
+    .contenedor-header-principal{
+        height: 10vh;
+        padding: 20px;
+    }
+    .contenedor-header-botones{
+        display: none;
+    }
+    .logo-header{
+        width: 50%;
+    }
+    .boton-menu-header-hamburger{
+        cursor: pointer;
+        display: block;
+        font-size: 40px;
+    }
+    /* Modal */
+
+    .modal-header-hamburguesa{
+        margin: 0px;
+        background-color: rgb(255, 255, 255);
+        width: 80vw;
+        height: 100vh;
+        font-size: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        border-radius: 8px; 
+        
+    }
+    .contenedor-modal-header-hamburguesa{
+        height: 10vh;
+        background-color: #F5F6F7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 25px;
+        padding-left: 30px;
+    }
+    .boton-cerrar-modal-hamburguesa{
+        cursor: pointer;
+        font-size: 40px;
+    }
+    .contenedor-modal-listado-hamburguesa{
+        height: 15vh;        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left: 30px;        
+    }
+    .contenedor-modal-header-text-favoritos{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #666666;
+    }
+    .icono-header-favorito{
+        color: #FDA310;
+        margin-right: 5px;
+    }
+    .contenedor-modal-header-text-perfil{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #666666;
+    }
+    .icono-header-perfil{
+        color: #FDA310;
+        margin-right: 5px;
+    }
+    .linea-header-modal{
+        margin-top: 20px;
+        width: 65vw;
+        margin-left: 30px;
+        color: #D0D2D4;
+    }
+    .contenedor-modal-cerrarSesion-hamburguesa{
+        display: flex;
+        padding-left: 30px;
+        padding-top: 30px;        
+    }
+    .text-cerarsesion-modal-header{
+        cursor: pointer;
+        margin-left: 5px;
+        font-weight: bold;
+    }
+    .circle-login-avatar-user-contenedor{
+        display: none;
+    }
+    .bienvenido-login-header{
+        font-weight: bold;
+      }
+}
