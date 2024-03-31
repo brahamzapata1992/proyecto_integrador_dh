@@ -1,19 +1,53 @@
+// Card.js
 import React, { useState } from 'react';
 import { RiStarSLine } from 'react-icons/ri';
 import { MdOutlineFavorite } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useApi } from '../../../../../../context/ApiContext';
 import './Card.css';
 
-const Card = ({ id, name, image, price }) => {
-    const [isClicked, setIsClicked] = useState(false);
+const Card = ({ id, name, image, price, isFavorite, onFavoriteClick }) => {
+    const [isClicked, setIsClicked] = useState(isFavorite);
+    const { loggedInUser } = useApi();
+    const navigate = useNavigate();
 
-    const handleClick = () => {
-        setIsClicked(!isClicked);
-    };
+    const handleFavoriteClick = async () => {
+        try {
+            if (loggedInUser === null) { 
+                navigate('/inicioSesion'); 
+                return; 
+            }
+    
+            if (isClicked) {
+                // Si el producto ya está marcado como favorito, eliminarlo de la lista de favoritos
+                await onFavoriteClick(id, false);
+            } else {
+                // Si el producto no está marcado como favorito, agregarlo a la lista de favoritos
+                const response = await fetch(`http://localhost:8081/api/favorites/${loggedInUser.userId}/${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+    
+                if (!response.ok) {                
+                    console.error('Failed to add product to favorites');
+                    return;
+                }
+            }
+    
+            // Cambia el estado de isClicked al valor opuesto
+            setIsClicked(prevState => !prevState);
+        } catch (error) {
+            console.error('Error while updating favorites:', error);
+        }
+    };  
+    
+    
 
     return (
         <div className='container-principal-single-card'>
-            <div className={`container-corazon-single-card ${isClicked ? 'clicked' : ''}`} onClick={handleClick}>
+            <div className={`container-corazon-single-card ${isClicked ? 'clicked' : ''}`} onClick={handleFavoriteClick}>
                 <MdOutlineFavorite className={`corazon-single-card ${isClicked ? 'clicked' : ''}`} />
             </div>
             <Link to={`/detalle-producto/${id}`} className='link-detail'>
@@ -36,3 +70,4 @@ const Card = ({ id, name, image, price }) => {
 };
 
 export default Card;
+

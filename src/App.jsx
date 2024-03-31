@@ -10,6 +10,13 @@ import Filtro from './components/body/public/home/Categorias/filtro/Filtro';
 import PublicDetalleProducto from './components/body/public/home/detalleProducto/PublicDetalleProducto';
 import AdminUsuarios from './components/body/admin/administrarUsuario/AdminUsuarios'
 import AdminCategorias from './components/body/admin/administrarCategorias/AdminCategorias'
+import AdministrarCaracteristicas from './components/body/admin/administrarCaracteristicas/AdministrarCaracteristicas'
+import Favoritos from './components/body/user/favoritos/Favoritos';
+import Perfil from './components/body/user/perfil/Perfil';
+import Calendario from './components/body/public/home/BuscadorProductos/calendario/Calendario';
+import AdminProducts from './components/body/admin/administrarProductos/AdminProducts';
+import CrearProducto from './components/body/admin/administrarProductos/crearProducto/CrearProducto';
+import EditarProducto from './components/body/admin/administrarProductos/editarProducto/EditarProducto'
 function App() {
   
 
@@ -26,12 +33,24 @@ function App() {
             /* seccion login*/
             <Route path="/registro" element={<CrearCuenta />}/>
             <Route path="/inicioSesion" element={<IniciarSesion />}/>
+            /* seccion perfil*/
+            <Route path="/perfil" element={<Perfil />}/>
+            /* seccion perfil*/
+            <Route path="/calendario" element={<Calendario />}/>
             /* Pagina Admin */
             <Route path="/administracion" element={<Dashboard />} />
             /* administrar usuarios*/
             <Route path="/administracion/Usuarios" element={<AdminUsuarios />} />
             /* administrar categorias*/
-            <Route path="/administracion/Categorias" element={<AdminCategorias />} /> 
+            <Route path="/administracion/Categorias" element={<AdminCategorias />} />
+            /* administrar caractteristicas*/
+            <Route path="/administracion/Caracteristicas" element={<AdministrarCaracteristicas />} />
+            /* administrar productos*/
+            <Route path="/administracion/Productos" element={<AdminProducts />} />
+            <Route path="/administracion/Productos/CrearProducto" element={<CrearProducto />} />
+            <Route path="/administracion/Productos/EditarProducto/:id" element={< EditarProducto />} />
+            /*seccion usuarios*/
+            <Route path="/favoritos" element={<Favoritos />} />                        
           </Routes>
           <Footer/>         
         </ApiProvider> 

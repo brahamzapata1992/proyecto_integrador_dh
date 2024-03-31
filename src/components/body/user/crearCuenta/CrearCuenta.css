@@ -78,7 +78,7 @@
     color: black;
     font-weight: bold;
 }
-.Modal-crear-usuario{
+.Modal-crear-usuario-dos{
     background-color: rgb(255, 255, 255);
     width: 65vw;
     height: 40vh;
@@ -91,7 +91,7 @@
     border-radius: 8px; 
     box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.1), 4px 0px 10px rgba(0, 0, 0, 0.1); 
 }
-.modal-user-creacion{
+.modal-user-creacion-dos{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -195,7 +195,7 @@
         color: black;
         font-weight: bold;
     }
-    .Modal-crear-usuario{
+    .Modal-crear-usuario-dos{
         background-color: rgb(255, 255, 255);
         width: 65vw;
         height: 40vh;
@@ -208,7 +208,7 @@
         border-radius: 8px; 
         box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.1), 4px 0px 10px rgba(0, 0, 0, 0.1); 
     }
-    .modal-user-creacion{
+    .modal-user-creacion-dos{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -312,7 +312,7 @@
         color: black;
         font-weight: bold;
     }
-    .Modal-crear-usuario{
+    .Modal-crear-usuario-dos{
         background-color: rgb(255, 255, 255);
         width: 65vw;
         height: 40vh;
@@ -325,13 +325,13 @@
         border-radius: 8px; 
         box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.1), 4px 0px 10px rgba(0, 0, 0, 0.1); 
     }
-    .modal-user-creacion{
+    .modal-user-creacion-dos{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
     }
-    .img-modal-user-creacion{
+    .img-modal-user-creacion-dos{
         width: 60%;
     }
     .text-modal-user-creacion{

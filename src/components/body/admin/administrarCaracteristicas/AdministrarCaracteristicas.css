@@ -120,6 +120,9 @@
     width: 100%;
     justify-content: space-around;    
 }
+.imagen-carcteristicas-tabla-admin{
+    width: 8%;
+}
 @media (max-width: 1440px) {
     .container-boton-admin-categorias{
         margin-right: 430px;

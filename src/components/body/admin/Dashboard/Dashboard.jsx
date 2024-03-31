@@ -10,8 +10,7 @@ import './Dashboard.css'
 
 const Dashboard = () => {
     const navigate = useNavigate();
-  return (
-    
+  return (    
     <div className='contenedor-elementos-dashboard'>
         <section className='left-section-dashboard'>
           <img className='img-admin-dashboard' src={img} alt="" />
@@ -21,8 +20,8 @@ const Dashboard = () => {
           <div className='dashboard-boton-container'>
             <button className='btn-dashboard' onClick={()=>navigate("/administracion/Usuarios")}><TbUsers className='icon-admin-boton'/> Usuarios</button>
             <button className='btn-dashboard' onClick={()=>navigate("/administracion/Categorias")}><MdOutlineCategory />Categorias</button>
-            <button className='btn-dashboard' onClick={()=>navigate("/administracion/Administrar-Caracteristicas")}><TbCategoryPlus className='icon-admin-boton'/> Caracteristicas</button>
-            <button className='btn-dashboard' onClick={()=>navigate("/administracion/Administrar-Productos")}><CiViewList className='icon-admin-boton'/> Lista de productos</button> 
+            <button className='btn-dashboard' onClick={()=>navigate("/administracion/Caracteristicas")}><TbCategoryPlus className='icon-admin-boton'/> Caracteristicas</button>
+            <button className='btn-dashboard' onClick={()=>navigate("/administracion/Productos")}><CiViewList className='icon-admin-boton'/> Lista de productos</button> 
           </div>                    
         </section>
         <section className='no-responsive-dashboard'>
@@ -36,8 +35,7 @@ const Dashboard = () => {
             <img className='imagen-no-responsive-dashboard' src={imagen} alt="" />
           </div>
         </section>
-    </div>        
-    
+    </div>    
   )
 }
 

@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     max-width: 100vw;
-    min-height: 60vh;    
-}
+    min-height: 60vh;     
+}       
 
 .grid-container-listaProductos {
     display: grid;

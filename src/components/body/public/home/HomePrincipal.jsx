@@ -1,16 +1,22 @@
-import React from 'react'
-import BuscadorProductos from './BuscadorProductos/BuscadorProductos'
-import Categorias from './Categorias/Categorias'
-import ListaProductos from './ListaProductos/ListaProductos'
+import React, { useState } from 'react';
+import BuscadorProductos from './BuscadorProductos/BuscadorProductos';
+import Categorias from './Categorias/Categorias';
+import ListaProductos from './ListaProductos/ListaProductos';
 
-const home = () => {
+const Home = () => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const handleSelectedCategoriesChange = (categories) => {
+    setSelectedCategories(categories);    
+  };
+
   return (
     <>
-      <BuscadorProductos />
-      <Categorias/>
-      <ListaProductos />
+      <BuscadorProductos onSelectedCategoriesChange={handleSelectedCategoriesChange} />
+      <Categorias />
+      <ListaProductos selectedCategories={selectedCategories} />
     </>
-  )
-}
+  );
+};
 
-export default home
+export default Home;

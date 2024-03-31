@@ -8,7 +8,7 @@ import { GoPerson } from "react-icons/go";
 import { Link, useNavigate } from 'react-router-dom';
 import { useApi } from '../../context/ApiContext';
 import { RiArrowDropDownFill } from "react-icons/ri";
-import './Header.css';
+import './Header.css'; 
 
 const Header = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -32,7 +32,7 @@ const Header = () => {
 
     const handleLogout = () => {
         updateLoggedInUser(null); 
-        navigate('/home');         
+        navigate('/inicioSesion');         
     };
 
     const toggleModalLogin = () => {
@@ -42,6 +42,16 @@ const Header = () => {
     const handleProfileClick = () => {
         toggleModalLogin();
     };
+
+    const favoritos = () =>{
+        navigate('/favoritos')
+        cerrarModal()
+    }
+    const perfil = () =>{
+        navigate('/perfil')
+        cerrarModal()
+    }
+
 
     return (
         <>
@@ -110,8 +120,8 @@ const Header = () => {
                         )}
                         {loggedInUser && (
                             <>
-                                <p className='contenedor-modal-header-text-perfil'><GoPerson className='icono-header-perfil'/> Perfil</p>
-                                <p className='contenedor-modal-header-text-favoritos'><MdFavoriteBorder className='icono-header-favorito'/> Favoritos</p>
+                                <p onClick={perfil} className='contenedor-modal-header-text-perfil'><GoPerson className='icono-header-perfil'/> Perfil</p>
+                                <p onClick={favoritos} className='contenedor-modal-header-text-favoritos'><MdFavoriteBorder className='icono-header-favorito'/> Favoritos</p>
                             </>
                         )}
                     </div>
@@ -126,9 +136,9 @@ const Header = () => {
             </Modal>
             {modalLogin && (
                 <div className='modal-nombre-drop-donw-header-listado' onClick={handleProfileClick}>
-                    <p className='text-icono-header-nuevo-modal-1'><GoPerson className='icono-header-perfil-nuevo-modal'/> Perfil</p>
+                    <p onClick={perfil} className='text-icono-header-nuevo-modal-1'><GoPerson className='icono-header-perfil-nuevo-modal'/> Perfil</p>
                     {loggedInUser && loggedInUser.userRole !== 'ADMIN' && (
-                        <p className='text-icono-header-nuevo-modal-2'><MdFavoriteBorder className='icono-header-perfil-nuevo-modal'/> Favoritos</p>
+                        <p onClick={favoritos} className='text-icono-header-nuevo-modal-2'><MdFavoriteBorder className='icono-header-perfil-nuevo-modal'/> Favoritos</p>
                     )}
                     <p className='text-icono-header-nuevo-modal-3' onClick={handleLogout}><CiLogout className='icono-header-perfil-nuevo-modal' /> Cerrar sesión</p>
                 </div>

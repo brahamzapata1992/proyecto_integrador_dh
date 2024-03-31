@@ -237,11 +237,17 @@
         color: #FDA310;
         margin-right: 5px;
     }
+    .contenedor-modal-header-text-favoritos:hover{
+        color: #FDA310;
+    }
     .contenedor-modal-header-text-perfil{
         cursor: pointer;
         display: flex;
         align-items: center;
         color: #666666;
+    }
+    .contenedor-modal-header-text-perfil:hover{
+        color: #FDA310;
     }
     .icono-header-perfil{
         color: #FDA310;
@@ -262,6 +268,10 @@
         cursor: pointer;
         margin-left: 5px;
         font-weight: bold;
+        color: #000000;
+    }
+    .text-cerarsesion-modal-header:hover{
+        color: #FDA310;
     }
     .circle-login-avatar-user-contenedor{
         display: none;

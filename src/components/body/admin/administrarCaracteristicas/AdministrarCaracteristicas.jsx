@@ -6,10 +6,10 @@ import { GoPlus } from "react-icons/go";
 import imgModal from '../../../../assets/admin/admin_usuarios/icon-creation-product.png'
 import { Link } from 'react-router-dom';
 import trashIcon from '../../../../assets/admin/admin_product/botonEliminar.svg'
-import './AdminCategorias.css';
+import './AdministrarCaracteristicas.css';
 
-const ListaCategorias = () => {
-  const { categorias, createCategory, deleteCategory } = useApi();
+const AdministrarCaracteristicas = () => {
+ const { caracteristicas, createCaracteristica, deleteCaracteristica } = useApi();
   const [filtro, setFiltro] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -47,7 +47,7 @@ const ListaCategorias = () => {
 
   const handleGuardarCategoria = async () => {
     try {
-      await createCategory(newCategoryData);
+      await createCaracteristica(newCategoryData);
       setRoleChanged(true);
     } catch (error) {
       console.error('Error al crear categoría:', error);
@@ -64,7 +64,7 @@ const ListaCategorias = () => {
 
   const confirmDelete = async () => {
     try {
-      await deleteCategory(categoryIdToDelete);
+      await deleteCaracteristica(categoryIdToDelete);
       // Aquí puedes realizar cualquier acción adicional después de eliminar la categoría, si es necesario.
       closeModal(); // Cerrar el modal después de eliminar con éxito.
     } catch (error) {
@@ -80,6 +80,7 @@ const ListaCategorias = () => {
       cell: (row) => (
         row.img && (
           <img
+            className='imagen-carcteristicas-tabla-admin'
             src={`data:image/svg+xml;base64,${row.img}`}
             alt={`Imagen de la categoría ${row.name}`}
           />
@@ -114,7 +115,7 @@ const ListaCategorias = () => {
     },
   ];
 
-  const filteredCategorias = categorias.filter((categoria) => {
+  const filteredCategorias = caracteristicas.filter((categoria) => {
     return (
       categoria.id.toString().includes(filtro) ||
       categoria.name.toLowerCase().includes(filtro.toLowerCase()) ||
@@ -134,7 +135,7 @@ const ListaCategorias = () => {
           className='filter-search-bar-admin'
         />
         <button className='boton-admin-categoria' onClick={handleAgregarCategoria}>
-          <GoPlus /> Agregar categoría
+          <GoPlus /> Agregar Caracteristicas
         </button>        
       </div>
 
@@ -156,12 +157,12 @@ const ListaCategorias = () => {
       >
         <div className='modal-categoria-edition'>
           <div className='container-categorias-admin'>
-            <h2 className='text-categorias-modal'><GoPlus /> Agregar Categoria</h2>
+            <h2 className='text-categorias-modal'><GoPlus /> Agregar Caracteristica</h2>
             <p className='text-categoria-modal-title'>Nombre <span className='spam-categoria'>*</span></p>
             <input
               className='input-modal-categoria'
               type="text"
-              placeholder='Cuerdas'
+              placeholder='Alta Gama'
               name="name"
               onChange={handleInputChange}
             />
@@ -169,7 +170,7 @@ const ListaCategorias = () => {
             <input
               className='input-modal-categoria'
               type="text"
-              placeholder='Esta cateegoria cuenta con ...'
+              placeholder='Esta caracteristica cuenta con ...'
               name="description"
               onChange={handleInputChange}
             />
@@ -198,7 +199,7 @@ const ListaCategorias = () => {
       >
         <div className='modal-user-edition'>
           <img className='img-icon-eliminar-categoria-admin' src={trashIcon} alt="icono-trash" />
-          <p className='text-eliminar-categoria-admin' >¿Estás seguro de que deseas eliminar esta categoría ?</p>
+          <p className='text-eliminar-categoria-admin' >¿Estás seguro de que deseas eliminar esta caracteristica ?</p>
           <div className='botones-modal-categoria-eliminar'>
             <button className='boton-modal-categoria-cerrar' onClick={closeModal}>Cancelar</button>
             <button className='boton-modal-categoria-guardar' onClick={confirmDelete}>Eliminar</button>
@@ -216,7 +217,7 @@ const ListaCategorias = () => {
         <div className='modal-user-edition'>
           <img className='img-modal-edition' src={imgModal} alt="" />
           <h4 className='text-modal-user'>Felicitaciones</h4>
-          <p className='text-modal-user-p'>¡Has logrado creado una nueva categoria!</p>
+          <p className='text-modal-user-p'>¡Has logrado creado una nueva caracteristica!</p>
           <button className='boton-modal-user' onClick={closeModal}>Cerrar</button>
         </div>
       </Modal>
@@ -224,5 +225,4 @@ const ListaCategorias = () => {
   );
 };
 
-export default ListaCategorias;
-
+export default AdministrarCaracteristicas

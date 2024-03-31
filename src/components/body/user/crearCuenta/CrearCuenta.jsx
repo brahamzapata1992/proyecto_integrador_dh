@@ -168,10 +168,10 @@ const CrearCuenta = () => {
         isOpen={showModal && roleChanged}
         onRequestClose={closeModal}
         contentLabel="Felicitaciones Modal"
-        className="Modal-crear-usuario"
+        className="Modal-crear-usuario-dos"
       >
-        <div className='modal-user-creacion'>
-          <img className='img-modal-user-creacion' src={imgModal} alt="" />
+        <div className='modal-user-creacion-dos'>
+          <img className='img-modal-user-creacion-dos' src={imgModal} alt="" />
           <h4 className='text-modal-user-creacion'>!Felicitaciones!</h4>
           <p className='text-modal-user-creacion'>¡Bienvenido a nuestra comunidad musical! 🎶 Por favor, toma un momento para revisar tu correo y confirmar tu registro!</p>          
           <button className='boton-modal-user-cerar' onClick={closeModal}>Cerrar</button>

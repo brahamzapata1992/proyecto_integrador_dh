@@ -4,13 +4,73 @@ const ApiContext = createContext();
 
 
 export const ApiProvider = ({ children }) => {
-  
+  const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [users, setUsers] = useState([]);
   const [categorias, setCategorias] = useState([]);
+  const [caracteristicas, setCaracteristicas] = useState([])
   const [loggedInUser, setLoggedInUser] = useState(null);  
   
+
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const response = await fetch('http://localhost:8081/api/admin/products');
+        if (response.ok) {
+          const data = await response.json();
+          setProductos(data);
+        } else {
+          setError('Error fetching product data');
+        }
+      } catch (error) {
+        setError('Error fetching product data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductos();
+  }, []);
+
+
+  const deleteCategory = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8081/api/admin/category/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setCategorias((prevCategories) => prevCategories.filter(category => category.id !== id));
+      } else {
+        setError('Error deleting category');
+      }
+    } catch (error) {
+      setError('Error deleting category');
+    }
+  };
+
+  const deleteCaracteristica = async (id) => {  
+    try {
+      const response = await fetch(`http://localhost:8081/api/admin/features/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setCaracteristicas((prevCategories) => prevCategories.filter(category => category.id !== id));
+      } else {
+        setError('Error deleting category');
+      }
+    } catch (error) {
+      setError('Error deleting category');
+    }
+  };
 
   const editProduct = async (formData, id) => {
     try {
@@ -90,6 +150,29 @@ export const ApiProvider = ({ children }) => {
     }
   };
 
+  const createCaracteristica = async (categoryData) => {
+    try {
+      const formData = new FormData();
+      formData.append('name', categoryData.name);
+      formData.append('description', categoryData.description);
+      formData.append('img', categoryData.img);
+
+      const response = await fetch('http://localhost:8081/api/admin/features/create', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const newCategory = await response.json();
+        setCaracteristicas((prevCategories) => [...prevCategories, newCategory]);
+      } else {
+        setError('Error creating category');
+      }
+    } catch (error) {
+      setError('Error creating category');
+    }
+  };
+
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -107,6 +190,24 @@ export const ApiProvider = ({ children }) => {
     };
 
     fetchCategorias();
+  }, []);
+
+  useEffect(() => {
+    const fetchCaracteristica = async () => {
+      try {
+        const response = await fetch('http://localhost:8081/api/admin/features/list');
+        if (response.ok) {
+          const data = await response.json();
+          setCaracteristicas(data);
+        } else {
+          setError('Error fetching category data');
+        }
+      } catch (error) {
+        setError('Error fetching category data');
+      }
+    };
+
+    fetchCaracteristica();
   }, []);
 
 
@@ -206,7 +307,7 @@ export const ApiProvider = ({ children }) => {
   
 
   return (
-    <ApiContext.Provider value={{ loading, error, deleteProduct, createProduct, fetchProductById, fetchProductsByCategory, users, categorias, createCategory, createAccount, loggedInUser, updateLoggedInUser, editProduct  }}>
+    <ApiContext.Provider value={{ productos ,loading, error, deleteProduct, createProduct, fetchProductById, fetchProductsByCategory, users, categorias, createCategory, createAccount, loggedInUser, updateLoggedInUser, editProduct, deleteCategory, createCaracteristica, deleteCaracteristica, caracteristicas   }}>
       {children}
     </ApiContext.Provider>
   );

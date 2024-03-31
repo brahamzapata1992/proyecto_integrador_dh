@@ -84,8 +84,13 @@
         justify-content: space-between;
     }
     .corazon-single-card{
-        color: #FDA310;
+        font-size: 30px;
+        color: #686766;
+        transition: background-color 0.3s;    
     }
+    .corazon-single-card.clicked {
+        color: #FDA310; /* Cambia el color de fondo del icono cuando se hace clic */
+      }
     .container-corazon-single-card{
         display: flex;
         justify-content: end;
@@ -130,8 +135,13 @@
         justify-content: space-between;
     }
     .corazon-single-card{
-        color: #FDA310;
+        font-size: 30px;
+        color: #686766;
+        transition: background-color 0.3s;    
     }
+    .corazon-single-card.clicked {
+        color: #FDA310; /* Cambia el color de fondo del icono cuando se hace clic */
+      }
     .container-corazon-single-card{
         display: flex;
         justify-content: end;

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './ListaProductos.css';
 import Card from './Card/Card';
 
-const ListaProductos = () => {
+const ListaProductos = ({ selectedCategories }) => {
     const [productos, setProductos] = useState([]);
+    const [filteredProductos, setFilteredProductos] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productosPerPage] = useState(10); 
+    const [productosPerPage] = useState(10);
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -15,13 +16,16 @@ const ListaProductos = () => {
                 const response = await fetch('http://localhost:8081/api/admin/products');
                 if (response.ok) {
                     const data = await response.json();
-                    setProductos(data);
+                    // Mezclar aleatoriamente los productos antes de establecerlos
+                    const randomizedProductos = data.sort(() => Math.random() - 0.5);
+                    setProductos(randomizedProductos);
+                    setLoading(false);
                 } else {
                     setError('Error fetching product data');
+                    setLoading(false);
                 }
             } catch (error) {
                 setError('Error fetching product data');
-            } finally {
                 setLoading(false);
             }
         };
@@ -29,36 +33,35 @@ const ListaProductos = () => {
         fetchProductos();
     }, []);
 
-    
-    const shuffleArray = (array) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+    useEffect(() => {
+        // Filtrar productos basados en las categorías seleccionadas
+        if (selectedCategories && selectedCategories.length > 0) {
+            const filtered = productos.filter(producto =>
+                selectedCategories.includes(producto.categoryName)
+            );
+            setFilteredProductos(filtered);
+        } else {
+            // Si no hay categorías seleccionadas, mostrar todos los productos
+            setFilteredProductos(productos);
         }
-        return array;
-    };
+    }, [selectedCategories, productos]);
 
-    
     const indexOfLastProducto = currentPage * productosPerPage;
     const indexOfFirstProducto = indexOfLastProducto - productosPerPage;
-    const currentProductos = productos.slice(indexOfFirstProducto, indexOfLastProducto);
+    const currentProductos = filteredProductos.slice(indexOfFirstProducto, indexOfLastProducto);
 
-    
-    const shuffledProductos = shuffleArray([...currentProductos]);
-
-    
     const nextPage = () => {
-        if (currentPage < Math.ceil(productos.length / productosPerPage)) {
+        if (currentPage < Math.ceil(filteredProductos.length / productosPerPage)) {
             setCurrentPage(currentPage + 1);
         }
     };
 
-    
     const prevPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     };
+    
 
     return (
         <div className='container-listado-cards'>
@@ -69,7 +72,7 @@ const ListaProductos = () => {
             ) : (
                 <div>
                     <div className="grid-container-listaProductos">
-                        {shuffledProductos.map((producto, index) => (
+                        {currentProductos.map((producto, index) => (
                             <Card
                                 key={index}
                                 id={producto.id} 
@@ -81,7 +84,7 @@ const ListaProductos = () => {
                     </div>
                     <div className="pagination">
                         <button onClick={prevPage} disabled={currentPage === 1}>Prev</button>
-                        <button onClick={nextPage} disabled={currentPage === Math.ceil(productos.length / productosPerPage)}>Next</button>
+                        <button onClick={nextPage} disabled={currentPage === Math.ceil(filteredProductos.length / productosPerPage)}>Next</button>
                     </div>
                 </div>
             )}
@@ -89,5 +92,4 @@ const ListaProductos = () => {
     );
 };
 
-export default ListaProductos;
-
+export default ListaProductos;  

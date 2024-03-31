@@ -1,0 +1,30 @@
+.calendario-contenedor-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+  
+  .calendario-centrado {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .unavailable-date {
+    background-color: #ffc0cb;
+    color: #000;
+  }
+  .clendaroio1{
+    width: 100px;
+  }
+  .clendaroio2{
+    width: 100px;
+  }
+  
+  /* Ajustes para hacerlo responsive */
+  @media screen and (max-width: 768px) {
+    .calendario-contenedor-principal {
+      flex-direction: column;
+    }
+  }
+  
