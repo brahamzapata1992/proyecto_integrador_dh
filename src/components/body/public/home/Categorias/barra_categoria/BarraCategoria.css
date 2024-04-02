@@ -1,4 +1,5 @@
 #Barra-Categoria-container{
+    margin-top: 13vh;
     background-image: url('../../../../../../assets/categorias/fondo_home.svg');  
     width: 99.5vw;
     margin-left: -40px;
@@ -8,7 +9,7 @@
     background-size: cover;
     display: flex;
     justify-content:space-between;
-    align-items: center;        
+    align-items: center;         
 }
 .barra-categoria-izq{
     width: 20%;
@@ -49,6 +50,7 @@
     }
     #Barra-Categoria-container{
         height: 15vh;
+        margin-top: 9vh; 
     }
     .img-barra-categoria-izq{
         display: none;       
@@ -68,7 +70,8 @@
         margin-right: 8px;
     }
     #Barra-Categoria-container{
-        width: 100vw;        
+        width: 100vw;
+        margin-top: 10vh;        
     }
     
 }

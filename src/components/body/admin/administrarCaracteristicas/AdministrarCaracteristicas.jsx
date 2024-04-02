@@ -109,7 +109,7 @@ const AdministrarCaracteristicas = () => {
       name: 'Acción',
       cell: (row) => (
         <button className="delete-button-categoria-admin" onClick={() => handleDelete(row.id)}>
-          <img src={trashIcon} alt="Eliminar" />
+          <img className='boton-eliminar-caracteristica-admin' src={trashIcon} alt="Eliminar" />
         </button>
       ),
     },

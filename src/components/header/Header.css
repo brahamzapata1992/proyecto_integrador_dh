@@ -1,4 +1,7 @@
 .contenedor-header-principal{
+    position: fixed;
+    top: 0;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     width: 100vw;
@@ -104,7 +107,7 @@
     justify-content: space-around;
     padding-left: 10px;    
     flex-direction: column;        
-    z-index: 0;
+    z-index: 10001;
     font-size: 20px;        
   }
   .text-icono-header-nuevo-modal-1{

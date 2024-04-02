@@ -17,6 +17,7 @@ import Calendario from './components/body/public/home/BuscadorProductos/calendar
 import AdminProducts from './components/body/admin/administrarProductos/AdminProducts';
 import CrearProducto from './components/body/admin/administrarProductos/crearProducto/CrearProducto';
 import EditarProducto from './components/body/admin/administrarProductos/editarProducto/EditarProducto'
+
 function App() {
   
 
@@ -29,7 +30,7 @@ function App() {
             /* Pagina principal */
             <Route path="/home" element={<HomePrincipal />} />
             <Route path="/detalle-producto/:id" element={<PublicDetalleProducto />} />
-            <Route path="/categoria/:id/:nombreCategoria" element={<Filtro />}/>
+            <Route path="/categoria/:id/:nombreCategoria" element={<Filtro />}/>            
             /* seccion login*/
             <Route path="/registro" element={<CrearCuenta />}/>
             <Route path="/inicioSesion" element={<IniciarSesion />}/>

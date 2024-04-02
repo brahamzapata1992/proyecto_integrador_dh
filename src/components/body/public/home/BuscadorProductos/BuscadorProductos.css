@@ -1,4 +1,5 @@
 .container-principal-buscador-productos{
+    margin-top: 13vh;
     background-image: url('../../../../../assets//home/fondo_home.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,7 +11,8 @@
     justify-content:center;
     align-items: left;
     padding-left: 40px; 
-    max-width: 100vw;       
+    max-width: 100vw;
+
 }
 .container-buscador-productos-inputs{
     margin-top: 40px;
@@ -58,8 +60,8 @@
     transform: translate(-50%, -50%);
     width: 10vw;         
     padding: 20px;
-    top: 43%;
-    left: 65.5%;
+    top: 46.5%;
+    left: 69.3%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
     display: flex;
@@ -69,7 +71,7 @@
   }
   .close-modal-buscador-productos {
     position: absolute;
-    top: 10px;
+    top: 1px;
     right: 10px;
     font-size: 20px;
     cursor: pointer;
@@ -89,7 +91,7 @@
   }
   .container-imagen-buscador-productos-chica {
     position: absolute;         
-    top: 17.4%;
+    top: 16.5%;
     left: 77%;
     width: 400px;
     height: 210px;
@@ -160,8 +162,8 @@
     transform: translate(-50%, -50%);
     width: 10vw;         
     padding: 20px;
-    top: 42.5%;
-    left: 65.9%;
+    top: 44.2%;
+    left: 68.6%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
     display: flex;
@@ -226,8 +228,8 @@
       transform: translate(-50%, -50%);
       width: 18vw;         
       padding: 20px;
-      top: 31.8%;
-      left: 60%;
+      top: 36.5%;
+      left: 60.2%;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
       display: flex;
@@ -276,7 +278,8 @@
         display: flex;
         flex-direction: column;        
         justify-content: center;
-        align-items: center;
+        align-items: center;        
+        margin-top: 1.8vh;
     }
     .container-lema-buscador-productos{        
         margin-top: 20px;
@@ -335,7 +338,7 @@
         transform: translate(-50%, -50%);
         width: 75%;         
         padding: 20px;
-        top: 50%;
+        top: 54.5%;
         left: 50%;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 

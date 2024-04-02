@@ -1,7 +1,8 @@
 .contenedor-elementos-dashboard{        
     width: 100vw;
     min-height: 70vh;
-    display: flex;        
+    display: flex;
+    margin-top: 13vh;         
 }
 .left-section-dashboard{        
     width: 50vw;

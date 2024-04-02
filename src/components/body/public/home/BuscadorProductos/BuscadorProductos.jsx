@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Calendario from './calendario/Calendario';
 import { IoIosArrowDropdown } from 'react-icons/io';
 import imagenChica from '../../../../../assets/home/imagen_home_mujer.svg';
 import './BuscadorProductos.css';
@@ -58,7 +58,7 @@ const BuscadorProductos = ({ onSelectedCategoriesChange }) => {
           <input className="input-buscador-productos" type="text" placeholder="Guitarra electrica acustica..." />
         </div>
         <div>
-          fechas
+          <Calendario className="calendar-section"/>
         </div>
         <button className="dropdown-buscador-productos" onClick={() => setModalOpen(true)}>
           Categoría <IoIosArrowDropdown className="icnn-drop-down" />

@@ -186,7 +186,7 @@ const EditarProducto = () => {
           </div>
           <div className='botones-form'>
             <button id='boton-guardar-crear' type="submit">Guardar</button>
-            <Link to="/admin/Administrar-Productos" id='boton-guardar-cerrar-link'>
+            <Link to="/administracion/Productos" id='boton-guardar-cerrar-link'>
               <button id='boton-guardar-crear' type="button" className='cancelar-boton' onClick={() => setShowModal(true)}>
                 Cancelar
               </button>

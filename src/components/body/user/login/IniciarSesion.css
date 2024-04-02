@@ -1,7 +1,8 @@
 .login-page-inicio-principal{
     width: 100vw;
     height: 70vh;
-    display: flex;                           
+    display: flex;
+    margin-top: 13vh;                           
 }
 .img-login-inicio{
     width: 39.3vw;

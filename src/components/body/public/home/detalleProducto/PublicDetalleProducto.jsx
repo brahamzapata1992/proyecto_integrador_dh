@@ -2,13 +2,46 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useApi } from '../../../../../context/ApiContext';
 import { IoChevronBack } from "react-icons/io5";
-import { TbPhotoDown } from "react-icons/tb";
+import { FaStar } from "react-icons/fa";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { GoChecklist } from "react-icons/go";
+import { TbPhotoShare } from "react-icons/tb";
+import GaleriaImagenes from './GaleriaImagenes/GaleriaImagenes'
+import PoliticasProducto from './politicasProducto/PoliticasProducto'
+import RedesProducto from './redesProducto/RedesProducto'
+import Opiniones from './Comentarios/Comentarios'
 import './PublicDetalleProducto.css';
 
 const PublicDetalleProducto = () => {
   const { id } = useParams();
   const { fetchProductById, loading, error } = useApi();
   const [product, setProduct] = useState(null);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [isPoliticasOpen, setIsPoliticasOpen] = useState(false);
+  const [isShareOpen, setIsShareOpen] = useState(false);
+
+  const openGallery = () => {
+    setIsGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+    setIsGalleryOpen(false);
+  };
+
+  const openPoliticas = () => {
+    setIsPoliticasOpen(true);
+  };
+
+  const closePoliticas = () => {
+    setIsPoliticasOpen(false);    
+  };
+  const openShare = () => {
+    setIsShareOpen(true);
+  };
+
+  const closeShare = () => {
+    setIsShareOpen(false);
+  };
 
   useEffect(() => {
     const getProductDetails = async () => {
@@ -35,6 +68,7 @@ const PublicDetalleProducto = () => {
     <div className='container-principal-detalle-producto'>
       {product && (
         <>
+          {/* container titulo y boton */}
           <div className="container-titulo-boton-detalle">
             <div className="titulo-detalle-producto">
               <p className='text-titulo-detalle-producto'>{product.name}</p>
@@ -43,8 +77,13 @@ const PublicDetalleProducto = () => {
               <Link to='/home' className='link-back-detalle-producto'><p className='back-icon-header-detalle'><IoChevronBack /> Atras</p></Link>
             </div>
           </div>
+          {/* container titulo y boton */}
+
+          {/* container izquierda y derecha*/}
           <div className='container-imagenes-deatlle-precio'>
-          <div className="imagenes-detalle-producto-container">
+            {/* container izquierda imagenes */}
+            <div className="imagenes-detalle-producto-container">
+              {/* imagen 1 */}
               <div className='container-detalle-producto-imagen1'>
               {product.images && product.images.length > 0 && (
                   <img
@@ -54,6 +93,7 @@ const PublicDetalleProducto = () => {
                   />
                 )}
               </div>
+              {/* contenedor imagenes pequenas */}
               <div className='container-galeria-detalle-producto'>
                 <div className='container-detalle-producto-imagen2'>
                 {product.images && product.images.length > 1 && (
@@ -64,6 +104,7 @@ const PublicDetalleProducto = () => {
                     />
                   )}
                 </div>
+                {/* imagen 3 */}
                 <div className='container-detalle-producto-imagen3'>
                 {product.images && product.images.length > 2 && (
                     <img
@@ -73,6 +114,7 @@ const PublicDetalleProducto = () => {
                     />
                   )}
                 </div>
+                {/* imagen 4 */}
                 <div className='container-detalle-producto-imagen4'>
                 {product.images && product.images.length > 3 && (
                     <img
@@ -82,6 +124,7 @@ const PublicDetalleProducto = () => {
                     />
                   )}
                 </div>
+                {/* imagen 5 */}
                 <div className='container-detalle-producto-imagen5'>
                 {product.images && product.images.length > 4 && (
                     <img
@@ -89,21 +132,62 @@ const PublicDetalleProducto = () => {
                       alt={`${product.name}-image-4`}
                       className="img-5"
                     />
-                  )}
+                  )}                  
+                </div>                             
+              </div>
+              <div className='container-galeria-fotos-detalle-producto' onClick={openGallery}>
+                <TbPhotoShare className='icono-galeria-detalle-producto'/><p className='ver-mas-galeria-detalle-producto'>Ver Mas</p>
+              </div>
+                {/* Componente de Galería de Imágenes */}
+                {isGalleryOpen && <GaleriaImagenes onClose={closeGallery} />}  
+              {/* cierre contenedor imagenes pequenas */}            
+            </div>
+            {/* cierre izquierdo imagenes */}
+            {/* container derecho */}
+            <div className='container-derecha-informacion-producto'>
+              <div className='container-detalle-derecha-estrella-redes'>
+                <div className='container-estrellas-detalle'>
+                  <FaStar className='estrella-calificacion' /><FaStar className='estrella-calificacion'/><FaStar className='estrella-calificacion'/><FaStar className='estrella-calificacion'/><FaStar className='estrella-calificacion-fake'/><p className='calificacion-estrellas-detalle-producto'>4/5 | 4 opiniones</p>
                 </div>
-              </div>            
+                <div onClick={openShare} className='container-social-media-detalle'>
+                  <IoShareSocialOutline className='icon-share-detalle-producto'/>
+                </div>
+                <RedesProducto isOpen={isShareOpen} onRequestClose={closeShare} /> 
+              </div>
+              <div>
+              <p className='precio-detalle-producto'>${Number(product.price).toLocaleString()} <span className='text-pordia-detalle-producto'>por dia</span> </p>
+              </div>
+              <div className='detalle-producto-texto-descripcion'>
+              <p>{product.description}</p>
+              </div>
+              <div>
+                calendario
+              </div>
+              <div className='container-detalle-producto-boton'>
+                <button className='boton-detalle-producto-reserva'>Reserva Ahora</button>
+              </div>
+              <div className='container-politicas-detalle-producto'>
+                <div className='container-icono-detalle-politica'>
+                  <GoChecklist className='iconos-politicas-detalle-producto'/>
+                </div>
+                <div onClick={openPoliticas} className='container-texto-detalle-politica'>
+                  <p>Politicas</p>
+                  <PoliticasProducto isOpen={isPoliticasOpen} onRequestClose={closePoliticas} />
+                  <p>Revise las politicas de envio, cancelación y reserva</p>
+                </div>                
+              </div>
             </div>
-            <div className="product-details-price-galery">
-              <div className="product-price"><p className='precio-detalle-producto'>${Number(product.price).toLocaleString()} <span className='text-pordia-detalle-producto'>por dia</span> </p></div>
-              <div className="product-gallery-icon-detalle"><TbPhotoDown /> Galería</div>
-            </div>
-            <div className="product-description-detalle-producto">
-            <p>{product.description}</p>
-            </div>
-          </div>            
-        </>
+            {/* cierre derecho textos */}
+          </div>
+          {/* /* container izquierda y derecha*/}         
+          <div className='comentarios-componente'>
+            <hr className='hr-oscura' />
+            <Opiniones />
+          </div>                       
+        </>        
       )}
     </div>
+    
   );
 }
 

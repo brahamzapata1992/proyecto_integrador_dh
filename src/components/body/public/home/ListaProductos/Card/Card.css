@@ -1,6 +1,6 @@
 .container-principal-single-card {
     width: 40vw;
-    height: 60vh;
+    height: 65vh;
     padding: 20px;
     font-size: 20px;
     border: 1px solid #ccc; 
@@ -56,7 +56,7 @@
 }
 @media (max-width: 1440px) {
     .container-principal-single-card {
-        height: 50vh;
+        height: 52vh;
     }
 }
 
@@ -64,7 +64,7 @@
  
     .container-principal-single-card {
         width: 38vw;
-        height: 36vh;
+        height: 38vh;
         padding: 20px;
         font-size: 20px;
         border: 1px solid #ccc; 

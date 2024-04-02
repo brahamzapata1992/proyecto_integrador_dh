@@ -10,7 +10,8 @@ export const ApiProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [caracteristicas, setCaracteristicas] = useState([])
-  const [loggedInUser, setLoggedInUser] = useState(null);  
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [reservacion, setReservacion] = useState([]);  
   
 
   useEffect(() => {
@@ -302,12 +303,47 @@ export const ApiProvider = ({ children }) => {
 
     fetchUsers();
   }, []);
+
+  const createReservation = async (reservationData) => {
+    try {
+      const response = await fetch('http://localhost:8081/api/customer/reservation/create', {
+        method: 'POST',
+        body: reservationData,
+      });
+
+      if (response.ok) {
+        const newReservation = await response.json();
+        setReservation((prevReservation) => [...prevReservation, newReservation]);
+      } else {
+        setError('Error creating reservation');
+      }
+    } catch (error) {
+      setError('Error creating reservation');
+    }
+  };
+    
+  const fetchReservation = async (id) => {
+    try {
+      const response = await fetch('http://localhost:8081/api/customer/reservation/update/${id}');
+      if (response.ok) {
+        const reservation = await response.json();
+        return reservation;
+      } else {
+        setError('Error fetching reservation by ID');
+        return null;
+      }
+    } catch (error) {
+      setError('Error fetching reservation by ID');
+      return null;
+    }
+  };
+
   
 
   
 
   return (
-    <ApiContext.Provider value={{ productos ,loading, error, deleteProduct, createProduct, fetchProductById, fetchProductsByCategory, users, categorias, createCategory, createAccount, loggedInUser, updateLoggedInUser, editProduct, deleteCategory, createCaracteristica, deleteCaracteristica, caracteristicas   }}>
+    <ApiContext.Provider value={{ fetchReservation,createReservation ,productos ,loading, error, deleteProduct, createProduct, fetchProductById, fetchProductsByCategory, users, categorias, createCategory, createAccount, loggedInUser, updateLoggedInUser, editProduct, deleteCategory, createCaracteristica, deleteCaracteristica, caracteristicas   }}>
       {children}
     </ApiContext.Provider>
   );

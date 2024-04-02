@@ -1,6 +1,6 @@
 .categorias-container-principal-admin{
-    margin-top: 7%;
-    min-height: 58vh;
+    margin-top: 20vh;
+    min-height: 63vh;
 }
 .filter-search-bar-admin{
     margin-bottom: 15px;
@@ -122,6 +122,9 @@
 }
 .imagen-carcteristicas-tabla-admin{
     width: 8%;
+}
+.boton-eliminar-caracteristica-admin{
+    width: 70%;
 }
 @media (max-width: 1440px) {
     .container-boton-admin-categorias{

@@ -15,7 +15,8 @@
   font-size: 16px;
   margin-left: 30px;
   margin-right: 30px;
-  align-items: center;  
+  align-items: center;
+  margin-top: 13vh; 
 }
 .contenedor-botones{
   display: flex;
