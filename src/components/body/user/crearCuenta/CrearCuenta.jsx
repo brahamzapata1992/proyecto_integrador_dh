@@ -105,7 +105,7 @@ const CrearCuenta = () => {
       <div className='form-create-container'>
         <h2 className='h2_crear_cuenta'>Crear Cuenta</h2>
         <form onSubmit={handleSubmit} className='formulario-principal-crear'>
-          <div className="form-group">
+          <div className="form-group-crear">
             <label htmlFor="firstName">Nombre</label>
             <input
               className='formulario-box-crear'
@@ -117,7 +117,7 @@ const CrearCuenta = () => {
             />
             <p className="error-message">{formErrors.firstNameError}</p>
           </div>
-          <div className="form-group">
+          <div className="form-group-crear">
             <label htmlFor="lastName">Apellido</label>
             <input
               className='formulario-box-crear'
@@ -129,7 +129,7 @@ const CrearCuenta = () => {
             />
             <p className="error-message">{formErrors.lastNameError}</p>
           </div>
-          <div className="form-group">
+          <div className="form-group-crear">
             <label htmlFor="email">Correo Electrónico</label>
             <input
               className='formulario-box-crear'
@@ -141,7 +141,7 @@ const CrearCuenta = () => {
             />
             <p className="error-message">{formErrors.emailError}</p>
           </div>
-          <div className="form-group">
+          <div className="form-group-crear">
             <label htmlFor="password">Contraseña</label>
             <input
               className='formulario-box-crear'
@@ -154,7 +154,7 @@ const CrearCuenta = () => {
             <p className="error-message">{formErrors.passwordError}</p>
           </div>
 
-          <button className='boton-crear-cuenta-crear' type="submit">Crear Cuenta</button>
+          <button className='boton-crear-cuenta-crear2' type="submit">Crear Cuenta</button>
           <div className='inf_create'>
           <Link to='/inicioSesion' class="link-crear-usuario">
           <p className='text-crear-link'>¿Ya tienes una cuenta creada? <span className='spam-text-crear-link'>Iniciar Sesión</span></p>

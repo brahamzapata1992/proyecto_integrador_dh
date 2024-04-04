@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useApi } from "../../../../../../context/ApiContext";
+import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import "./Calendario.css";
 import es from "date-fns/locale/es";
-import format from "date-fns/format";
+
 import Modal from "react-modal";
 import alertap from "../../../../../../assets/calendario/Imagen de WhatsApp 2024-04-02 a las 16.38.13_ba42fd00.jpg";
 
 Modal.setAppElement("#root"); // Establecer el elemento raíz de la aplicación para el modal
 
-function Calendario() {
+function Calendario({ onDateSelect }) {
   const [fechasOcupadas, setFechasOcupadas] = useState([]);
   const [monthsToShow, setMonthsToShow] = useState(
     window.innerWidth <= 768 ? 1 : 2
@@ -24,7 +25,7 @@ function Calendario() {
   const inputBoxRef = useRef(null);
   const calendarioCardRef = useRef(null);
   const dateRangeRef = useRef(null); // Ref para el componente DateRange
-  const { createReservation, fetchReservation } = useApi();
+  
 
   const now = new Date();
   const offset = now.getTimezoneOffset() * 60000;
@@ -58,7 +59,7 @@ function Calendario() {
 
   const handleSelect = (ranges) => {
     const { startDate, endDate } = ranges.selection;
-    setSelectedRange({ startDate, endDate });
+    setSelectedRange({ startDate, endDate });    
     if (fechasOcupadas.some((date) => startDate <= date && date <= endDate)) {
       // Si alguna fecha está bloqueada, mostrar modal
       setShowModal(true);
@@ -67,6 +68,10 @@ function Calendario() {
       setStartFecha(startDate);
       setEndFecha(endDate);
       setOpen(false); // Cerrar el calendario después de seleccionar las fechas
+      // Enviar las fechas seleccionadas al componente padre
+      const formattedStartDate = format(startDate, "yyyy-MM-dd");
+        const formattedEndDate = format(endDate, "yyyy-MM-dd");
+        onDateSelect(formattedStartDate, formattedEndDate);
     }
   };
 
@@ -98,7 +103,7 @@ function Calendario() {
       <input
         value={`${format(startFecha, "MM/dd/yyyy")} to ${format(
           endFecha,
-          "MM/dd/yyyy"
+          "yyyy/MM/dd"
         )}`}
         readOnly
         className="inputBox"
@@ -164,6 +169,7 @@ function Calendario() {
 }
 
 export default Calendario;
+
 
 
 

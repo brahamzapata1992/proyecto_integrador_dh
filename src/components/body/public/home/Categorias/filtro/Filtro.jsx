@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import Card from '../../ListaProductos/Card/Card';
 import BarraCategoria from '../barra_categoria/BarraCategoria';
 import './Filtro.css';
+import WhatsAppButton from '../../whatsapp/WhatsAppButton';
+
 
 const Filtro = () => {
   const { fetchProductsByCategory, loading, error } = useApi();
@@ -13,6 +15,7 @@ const Filtro = () => {
   const [productosPerPage] = useState(10);
   const [loadingInitial, setLoadingInitial] = useState(true);
   const [totalProducts, setTotalProducts] = useState(0);
+  
  
   useEffect(() => {
     const fetchData = async () => {
@@ -79,6 +82,7 @@ const Filtro = () => {
           </div>
         </div>
       </div>
+      <WhatsAppButton />
     </div>
   );
 };

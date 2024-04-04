@@ -37,27 +37,28 @@
     font-size: 28px;
     font-weight: bold;
 }
-.form-group{
+.form-group-crear{
     display: flex;
     flex-direction: column;
     color: #000000b6;
 }
 .formulario-box-crear{
-    height: 48px;
+    height: 48px;    
     border-radius: 10px;
     border-color: #00000063;
     padding: 20px;
     margin-top: 8px;
     border-width: 0.0005px;
-    font-size: 20px;        
+    font-size: 20px;          
 }
 .error-message{
     text-align: right;
     margin-top: 5px;
     color: #E54E13;
 }
-.boton-crear-cuenta-crear{
+.boton-crear-cuenta-crear2{
     height: 60px;
+    width: 100%;
     border-radius: 20px;
     border: none;
     background-color: #FDA310;

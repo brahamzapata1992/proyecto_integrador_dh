@@ -96,6 +96,7 @@ const AdminProducts = () => {
       {error && <p>Error al cargar productos: {error}</p>}
 
       <DataTable
+      className="tabla-productos-admin-2"
         columns={columns}
         data={productos}
         selectableRows

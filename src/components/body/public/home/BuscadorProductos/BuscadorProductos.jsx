@@ -11,6 +11,11 @@ const BuscadorProductos = ({ onSelectedCategoriesChange }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   
   
+  const handleDateSelect = (startDate, endDate) => {
+    console.log("Fecha de inicio:", startDate);
+    console.log("Fecha de fin:", endDate);
+  };
+
 
   useEffect(() => {
     // Llamada a la API para obtener las categorías
@@ -58,7 +63,7 @@ const BuscadorProductos = ({ onSelectedCategoriesChange }) => {
           <input className="input-buscador-productos" type="text" placeholder="Guitarra electrica acustica..." />
         </div>
         <div>
-          <Calendario className="calendar-section"/>
+          <Calendario onDateSelect={handleDateSelect} className="calendar-section"/>
         </div>
         <button className="dropdown-buscador-productos" onClick={() => setModalOpen(true)}>
           Categoría <IoIosArrowDropdown className="icnn-drop-down" />

@@ -1,24 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import Modal from 'react-modal'; 
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useApi } from '../../../../../context/ApiContext';
 import { IoChevronBack } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { GoChecklist } from "react-icons/go";
 import { TbPhotoShare } from "react-icons/tb";
+import alert from '../../../../../assets/detalleProducto/alert.svg'
 import GaleriaImagenes from './GaleriaImagenes/GaleriaImagenes'
 import PoliticasProducto from './politicasProducto/PoliticasProducto'
 import RedesProducto from './redesProducto/RedesProducto'
 import Opiniones from './Comentarios/Comentarios'
+import Calendario from '../detalleProducto/calendarioDetalle/CalendarioDetalle'
 import './PublicDetalleProducto.css';
 
 const PublicDetalleProducto = () => {
   const { id } = useParams();
-  const { fetchProductById, loading, error } = useApi();
+  const navigate = useNavigate();
+  const { fetchProductById, loading, error, loggedInUser } = useApi();
   const [product, setProduct] = useState(null);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [isPoliticasOpen, setIsPoliticasOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClick = () => {
+    if (loggedInUser) {
+      // Redirige al usuario autenticado a la sección de reservas
+      navigate(`/reservas/${product.id}`);
+    } else {      
+      setShowModal(true);
+    }
+  };
+
+  const handleCloseModal = () =>{
+    setShowModal(false)
+   }
+
+  const handleLogin = () => {   
+    navigate('/inicioSesion');
+  };
 
   const openGallery = () => {
     setIsGalleryOpen(true);
@@ -160,11 +182,23 @@ const PublicDetalleProducto = () => {
               <div className='detalle-producto-texto-descripcion'>
               <p>{product.description}</p>
               </div>
-              <div>
-                calendario
+              <div className='container-calemndario-detalle-producto'>
+                  <Calendario />
               </div>
-              <div className='container-detalle-producto-boton'>
+              <div onClick={handleClick} className='container-detalle-producto-boton'>
                 <button className='boton-detalle-producto-reserva'>Reserva Ahora</button>
+                {showModal && (
+                <div className='main-container'>
+                  <div className='modal-container'>
+                      <div className="modal">                      
+                        <img className='modal-alert' src={alert} alt="" />
+                        <button className='cerrar' onClick={handleCloseModal}>X</button>
+                        <p>Para poder reservar un instrumento musical debes iniciar sesion</p>
+                        <button onClick={handleLogin} className='btn-iniciar-sesion'>Iniciar sesión</button>
+                      </div>
+                  </div>
+                </div>
+                )}
               </div>
               <div className='container-politicas-detalle-producto'>
                 <div className='container-icono-detalle-politica'>

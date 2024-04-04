@@ -134,7 +134,7 @@ const AdministrarCaracteristicas = () => {
           onChange={handleFiltroChange}
           className='filter-search-bar-admin'
         />
-        <button className='boton-admin-categoria' onClick={handleAgregarCategoria}>
+        <button id='boton-admin-categoria' onClick={handleAgregarCategoria}>
           <GoPlus /> Agregar Caracteristicas
         </button>        
       </div>

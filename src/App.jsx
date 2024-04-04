@@ -17,6 +17,9 @@ import Calendario from './components/body/public/home/BuscadorProductos/calendar
 import AdminProducts from './components/body/admin/administrarProductos/AdminProducts';
 import CrearProducto from './components/body/admin/administrarProductos/crearProducto/CrearProducto';
 import EditarProducto from './components/body/admin/administrarProductos/editarProducto/EditarProducto'
+import RutaNoEncontrada from './components/body/rutaNoEncontrada/RutaNoEncontrada';
+import Reservas from './components/body/public/home/detalleProducto/Reservas/Reservas'
+import ConfirmacionReserva from './components/body/public/home/detalleProducto/confirmacionReserva/ConfirmacionReserva'
 
 function App() {
   
@@ -30,7 +33,11 @@ function App() {
             /* Pagina principal */
             <Route path="/home" element={<HomePrincipal />} />
             <Route path="/detalle-producto/:id" element={<PublicDetalleProducto />} />
-            <Route path="/categoria/:id/:nombreCategoria" element={<Filtro />}/>            
+            <Route path="/categoria/:id/:nombreCategoria" element={<Filtro />}/>
+            /* Reservas */
+            <Route path="/reservas/:id" element={<Reservas/>}/>
+            /* Confirmacion Reserva */
+            <Route path="/confirmacion-reserva" element={<ConfirmacionReserva />} />            
             /* seccion login*/
             <Route path="/registro" element={<CrearCuenta />}/>
             <Route path="/inicioSesion" element={<IniciarSesion />}/>
@@ -51,7 +58,9 @@ function App() {
             <Route path="/administracion/Productos/CrearProducto" element={<CrearProducto />} />
             <Route path="/administracion/Productos/EditarProducto/:id" element={< EditarProducto />} />
             /*seccion usuarios*/
-            <Route path="/favoritos" element={<Favoritos />} />                        
+            <Route path="/favoritos" element={<Favoritos />} />
+            /*Ruta not Found*/
+            <Route path="*" element={<RutaNoEncontrada />} />
           </Routes>
           <Footer/>         
         </ApiProvider> 
