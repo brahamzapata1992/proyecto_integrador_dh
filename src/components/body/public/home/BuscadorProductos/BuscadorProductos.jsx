@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Calendario from './calendario/Calendario';
+import CalendarioBarraBusqueda from '../BuscadorProductos/calendarioBarraBusqueda/CalendarioBarraBusqueda';
 import { IoIosArrowDropdown } from 'react-icons/io';
 import imagenChica from '../../../../../assets/home/imagen_home_mujer.svg';
+import { SearchBar } from "./searchBar/SearchBar";
+import { SearchResultsList } from "./searchBar/SearchResultsList";
 import './BuscadorProductos.css';
 
 
@@ -9,6 +11,7 @@ const BuscadorProductos = ({ onSelectedCategoriesChange }) => {
   const [categories, setCategories] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [results, setResults] = useState([]);
   
   
   const handleDateSelect = (startDate, endDate) => {
@@ -59,11 +62,13 @@ const BuscadorProductos = ({ onSelectedCategoriesChange }) => {
         <p>Busca el instrumento que deseas rentar al mejor precio</p>
       </div>
       <div className="container-buscador-productos-inputs">
-        <div>
-          <input className="input-buscador-productos" type="text" placeholder="Guitarra electrica acustica..." />
+      <div>
+        <SearchBar className="input-buscador-productos" setResults={setResults} />
+        <div className='resultados-buscador-productos'>
+        {results && results.length > 0 && <SearchResultsList results={results}/>}</div>
         </div>
         <div>
-          <Calendario onDateSelect={handleDateSelect} className="calendar-section"/>
+          <CalendarioBarraBusqueda onDateSelect={handleDateSelect} className="calendar-section"/>
         </div>
         <button className="dropdown-buscador-productos" onClick={() => setModalOpen(true)}>
           Categoría <IoIosArrowDropdown className="icnn-drop-down" />

@@ -153,7 +153,7 @@ const AdministrarCaracteristicas = () => {
         isOpen={showModal}
         onRequestClose={closeModal}
         contentLabel="Agregar Categoría Modal"
-        className="Modal"
+        className="Modal-categoria"
       >
         <div className='modal-categoria-edition'>
           <div className='container-categorias-admin'>

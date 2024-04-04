@@ -14,6 +14,7 @@ import RedesProducto from './redesProducto/RedesProducto'
 import Opiniones from './Comentarios/Comentarios'
 import Calendario from '../detalleProducto/calendarioDetalle/CalendarioDetalle'
 import './PublicDetalleProducto.css';
+import Caracteristicas from './caracteristicas/Caracteristicas';
 
 const PublicDetalleProducto = () => {
   const { id } = useParams();
@@ -213,7 +214,11 @@ const PublicDetalleProducto = () => {
             </div>
             {/* cierre derecho textos */}
           </div>
-          {/* /* container izquierda y derecha*/}         
+          {/* /* container izquierda y derecha*/}
+          <div className='caracteristicas-componente'>
+            <hr className='hr-oscura' />
+            <Caracteristicas />
+          </div>         
           <div className='comentarios-componente'>
             <hr className='hr-oscura' />
             <Opiniones />

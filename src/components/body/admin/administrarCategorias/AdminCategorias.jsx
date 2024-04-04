@@ -138,7 +138,7 @@ const ListaCategorias = () => {
         </button>        
       </div>
 
-      <DataTable
+      <DataTable  
         columns={columns}
         data={filteredCategorias}
         selectableRows
@@ -152,7 +152,7 @@ const ListaCategorias = () => {
         isOpen={showModal}
         onRequestClose={closeModal}
         contentLabel="Agregar Categoría Modal"
-        className="Modal"
+        className="Modal-categoria"
       >
         <div className='modal-categoria-edition'>
           <div className='container-categorias-admin'>

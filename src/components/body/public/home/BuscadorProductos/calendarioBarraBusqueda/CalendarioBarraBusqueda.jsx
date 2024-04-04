@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useApi } from "../../../../../../context/ApiContext";
+import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import "./CalendarioDetalle.css";
+import "./CalendarioBarraBusqueda.css";
 import es from "date-fns/locale/es";
-import format from "date-fns/format";
+
 import Modal from "react-modal";
 import alertap from "../../../../../../assets/calendario/Imagen de WhatsApp 2024-04-02 a las 16.38.13_ba42fd00.jpg";
 
 Modal.setAppElement("#root"); // Establecer el elemento raíz de la aplicación para el modal
 
-function CalendarioDetalle() {
+function CalendarioBarraBusqueda({ onDateSelect }) {
   const [fechasOcupadas, setFechasOcupadas] = useState([]);
   const [monthsToShow, setMonthsToShow] = useState(
     window.innerWidth <= 768 ? 1 : 2
@@ -24,7 +25,7 @@ function CalendarioDetalle() {
   const inputBoxRef = useRef(null);
   const calendarioCardRef = useRef(null);
   const dateRangeRef = useRef(null); // Ref para el componente DateRange
-  const { createReservation, fetchReservation } = useApi();
+  
 
   const now = new Date();
   const offset = now.getTimezoneOffset() * 60000;
@@ -67,6 +68,10 @@ function CalendarioDetalle() {
       setStartFecha(startDate);
       setEndFecha(endDate);
       setOpen(false); // Cerrar el calendario después de seleccionar las fechas
+      // Enviar las fechas seleccionadas al componente padre
+      const formattedStartDate = format(startDate, "yyyy-MM-dd");
+        const formattedEndDate = format(endDate, "yyyy-MM-dd");
+        onDateSelect(formattedStartDate, formattedEndDate);
     }
   };
 
@@ -123,7 +128,7 @@ function CalendarioDetalle() {
         </div>
       </Modal>
       {open && (
-        <div className="calendario-card-2" ref={calendarioCardRef}>
+        <div className="calendario-card" ref={calendarioCardRef}>
           <DateRange
             ref={dateRangeRef} // Pasar la ref al componente DateRange
             ranges={[
@@ -163,4 +168,4 @@ function CalendarioDetalle() {
   );
 }
 
-export default CalendarioDetalle;
+export default CalendarioBarraBusqueda;

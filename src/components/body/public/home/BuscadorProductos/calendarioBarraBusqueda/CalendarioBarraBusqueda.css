@@ -1,5 +1,4 @@
 .calendario-container {
-    
     position: relative;
     display: flex;
     justify-content: center;
@@ -7,7 +6,7 @@
     z-index: 1;  
   }
   
-  .calendario-card-2 {
+  .calendario-card {
     position: absolute;
     background-color: white;
     border: 1px solid #FDA310;
@@ -17,11 +16,11 @@
     z-index: 1;  
   }
   
-  .calendario-card-2 {  
-    top: calc(57.5% + 30px); /* Posición debajo del botón */
+  .calendario-card {  
+    top: calc(31.1% + 30px); /* Posición debajo del botón */
   }
   
-  .calendario-card-2 select {
+  .calendario-card select {
     background-color: #FDA310;
     border: 1px solid #ced4da;
     border-radius: 5px;
@@ -30,7 +29,7 @@
     width: 100px;
   }
   
-  .calendario-card-2 select:hover {
+  .calendario-card select:hover {
     background-color: #FFCC5A;
     border-radius: 5px;
   }
@@ -86,25 +85,21 @@
     height: 48px;
   }
   @media (max-width: 1440px) {
-    .calendario-card-2 {  
-      top: calc(61% + 30px); 
+    .calendario-card {  
+      top: calc(31% + 30px); 
     }
   }
   @media (max-width: 1024px) {
-    .calendario-card-2 {  
-      top: calc(125% + 30px); 
+    .calendario-card {  
+      top: calc(25% + 30px); 
     }
     .inputBox{
-      font-size: 20px;      
+      font-size: 9px;
     }
-    .search-bar{
-        width: 50vw;
-    }
-    
   }
   @media (max-width: 767px) {
-    .calendario-card-2 {  
-      top: calc(128.8% + 30px); 
+    .calendario-card {  
+      top: calc(33.5% + 30px); 
     }
     .inputBox{
       font-size: 20px;

@@ -10,6 +10,7 @@
     overflow: hidden;        
 }
 .container-fin-reserva-derecha{
+    padding-left: 7vw;
     width: 65vw;
     padding-right: 6vw;
 }
@@ -87,6 +88,9 @@
     }
     .icono-whatsapp-fin-reserva{
         margin-top: 13vh;
+    }
+    .container-titulo-fin-presentacion{
+        margin-top: 5vh;
     }
     
 }

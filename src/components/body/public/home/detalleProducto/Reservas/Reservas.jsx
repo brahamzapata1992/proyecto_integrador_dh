@@ -100,7 +100,7 @@ const Reservas = () => {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                     <div clayssName='user-detail'>
                         <h4>Usuario Que Reserva</h4>
                         <h5>Nombre:</h5>
@@ -112,7 +112,7 @@ const Reservas = () => {
                     </div>
                     <div className='direccion'>
                         <label htmlFor="">Direccion</label>
-                        <div> <input type="text" /></div>
+                        <div> <input className='input-reservas' type="text" /></div>
                     </div>
                 </div>
                 <div className='reserva-detail'>

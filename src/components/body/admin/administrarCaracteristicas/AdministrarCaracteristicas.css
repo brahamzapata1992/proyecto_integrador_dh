@@ -41,6 +41,14 @@
   justify-content: space-evenly;
   padding: 15px;  
 }
+.Modal-categoria{
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 35vw;
+    position: absolute;
+    top: 20vh;
+    left: 30vw;
+}
 
 .text-categorias-modal{
     display: flex;

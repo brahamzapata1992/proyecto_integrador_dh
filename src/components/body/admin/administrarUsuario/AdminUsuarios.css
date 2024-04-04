@@ -1,7 +1,8 @@
 .admin-usuarios-container {
   margin-top: 9%;
   min-height: 50vh;
-  margin-top: 13vh;   
+  margin-top: 13vh;
+  min-height: 70vh;  
 }
 
 .avatar-circle {
